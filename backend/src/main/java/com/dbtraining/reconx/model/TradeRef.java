@@ -1,7 +1,3 @@
-package com.dbtraining.reconx.model;
-
-import java.util.Objects;
-import java.util.regex.Pattern;
 
 /**
  * ============================================================================
@@ -17,6 +13,12 @@ import java.util.regex.Pattern;
  * OBSERVE: TradeRef.of("EQU-20260602-0001") works; .of("foo") throws.
  * ============================================================================
  */
+
+package com.dbtraining.reconx.model;
+
+import java.util.Objects;
+import java.util.regex.Pattern;
+
 public record TradeRef(String value) {
 
     private static final Pattern PATTERN = Pattern.compile("^[A-Z]{3}-\\d{8}-\\d{4}$");
@@ -32,7 +34,6 @@ public record TradeRef(String value) {
     public static TradeRef of(String value) {
         return new TradeRef(value);
     }
-
     @Override
     public String toString() {
         return value;
