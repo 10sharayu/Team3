@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:reconx;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate                  # Liquibase does the create — JPA only validates
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+logging:
+  level:
+    com.dbtraining.reconx: DEBUG
+    org.hibernate.SQL: DEBUG
