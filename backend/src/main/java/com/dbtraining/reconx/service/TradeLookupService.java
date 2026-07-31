@@ -18,7 +18,7 @@ public class TradeLookupService {
     }
 
     public Counterparty counterpartyForTradeRef(String tradeRef) {
-        return tradeRepo.findByRef(tradeRef)
+        return tradeRepo.findByTradeRef(tradeRef)
                 .map(Trade::counterpartyId)
                 .flatMap(cpRepo::findById)
                 .orElseThrow(() -> new NoSuchElementException(
