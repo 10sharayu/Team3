@@ -1,7 +1,7 @@
 package com.dbtraining.reconx.service;
 
-import com.dbtraining.reconx.model.Counterparty;
-import com.dbtraining.reconx.model.Trade;
+import com.dbtraining.reconx.repository.entity.Counterparty;
+import com.dbtraining.reconx.repository.entity.Trade;
 import com.dbtraining.reconx.repository.CounterpartyRepository;
 import com.dbtraining.reconx.repository.TradeRepository;
 
