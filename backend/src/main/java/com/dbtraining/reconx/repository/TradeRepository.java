@@ -33,7 +33,7 @@ public interface TradeRepository
     Page<Trade> findByFilters(@Param("from") LocalDate from,
                               @Param("to") LocalDate to,
                               @Param("status") String status,
-                              @Param("counterpartyId") Long counterpartyId,
+                             @Param("counterpartyId") Long counterpartyId,
                               Pageable pageable);
 
     long countByStatus(String status);
