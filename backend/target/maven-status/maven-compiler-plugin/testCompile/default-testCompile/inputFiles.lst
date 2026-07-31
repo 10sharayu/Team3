@@ -1,4 +1,6 @@
 C:\Users\nandh\Ideaprojects\Team3\backend\src\test\java\com\dbtraining\reconx\controller\TradeControllerWebMvcTest.java
+C:\Users\nandh\Ideaprojects\Team3\backend\src\test\java\com\dbtraining\reconx\integration\LiquibaseMigrationsIT.java
+C:\Users\nandh\Ideaprojects\Team3\backend\src\test\java\com\dbtraining\reconx\integration\TradeLifecycleIT.java
 C:\Users\nandh\Ideaprojects\Team3\backend\src\test\java\com\dbtraining\reconx\model\EquityTradeTest.java
 C:\Users\nandh\Ideaprojects\Team3\backend\src\test\java\com\dbtraining\reconx\model\ReconciliationRuleTest.java
 C:\Users\nandh\Ideaprojects\Team3\backend\src\test\java\com\dbtraining\reconx\service\ReconciliationEngineTest.java
