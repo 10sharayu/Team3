@@ -1,39 +1,52 @@
 -------------------------------------------------------------------------------
 Test set: com.dbtraining.reconx.service.ReconciliationEngineTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.022 s <<< FAILURE! -- in com.dbtraining.reconx.service.ReconciliationEngineTest
-com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_missingCounterpartyTrade_returnsBreak -- Time elapsed: 0.003 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: TICKET-ADV042 not implemented yet
-	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
-	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
-	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_missingCounterpartyTrade_returnsBreak(ReconciliationEngineTest.java:36)
+Tests run: 6, Failures: 2, Errors: 3, Skipped: 0, Time elapsed: 0.329 s <<< FAILURE! -- in com.dbtraining.reconx.service.ReconciliationEngineTest
+com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_missingCounterpartyTrade_returnsBreak -- Time elapsed: 0.058 s <<< ERROR!
+java.lang.IllegalArgumentException: Invalid tradeRef format 'EQU-EDGE-1' — expected AAA-YYYYMMDD-NNNN
+	at com.dbtraining.reconx.model.TradeRef.<init>(TradeRef.java:30)
+	at com.dbtraining.reconx.model.TradeRef.of(TradeRef.java:35)
+	at com.dbtraining.reconx.service.ReconciliationEngineTest.equity(ReconciliationEngineTest.java:90)
+	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_missingCounterpartyTrade_returnsBreak(ReconciliationEngineTest.java:51)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_exactMatch_returnsMatched -- Time elapsed: 0.002 s <<< FAILURE!
+com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_exactMatch_returnsMatched -- Time elapsed: 0.009 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: TICKET-ADV040 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
-	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_exactMatch_returnsMatched(ReconciliationEngineTest.java:23)
+	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_exactMatch_returnsMatched(ReconciliationEngineTest.java:27)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_priceTolerance_withinThreshold -- Time elapsed: 0.002 s <<< FAILURE!
+com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_singleInternalNoExternal_returnsBreak -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.IllegalArgumentException: Invalid tradeRef format 'EQU-20260603-EDGE-1' — expected AAA-YYYYMMDD-NNNN
+	at com.dbtraining.reconx.model.TradeRef.<init>(TradeRef.java:30)
+	at com.dbtraining.reconx.model.TradeRef.of(TradeRef.java:35)
+	at com.dbtraining.reconx.service.ReconciliationEngineTest.equity(ReconciliationEngineTest.java:90)
+	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_singleInternalNoExternal_returnsBreak(ReconciliationEngineTest.java:32)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_priceTolerance_withinThreshold -- Time elapsed: 0.001 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: TICKET-ADV041 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
-	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_priceTolerance_withinThreshold(ReconciliationEngineTest.java:29)
+	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_priceTolerance_withinThreshold(ReconciliationEngineTest.java:44)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
-com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_emptyInternal_returnsEmpty -- Time elapsed: 0.003 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: TICKET-ADV040 not implemented yet
-	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
-	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
-	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_emptyInternal_returnsEmpty(ReconciliationEngineTest.java:42)
+com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_allMismatched_summaryShowsZeroMatched -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	ReconSummary cannot be resolved to a type
+	ReconSummaryCollector cannot be resolved to a type
+
+	at com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_allMismatched_summaryShowsZeroMatched(ReconciliationEngineTest.java:76)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
