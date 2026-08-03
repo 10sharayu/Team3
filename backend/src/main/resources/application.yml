@@ -11,6 +11,8 @@
 #          Liquibase runs, sample users are seeded.
 # =============================================================================
 spring:
+  jmx:
+    enabled: true
   application:
     name: reconx
   profiles:

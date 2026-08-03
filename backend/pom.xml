@@ -37,6 +37,7 @@
         <module>repository</module>
         <module>service</module>
         <module>api</module>
+        <module>../recon-audit-starter</module>
     </modules>
 
 
@@ -74,6 +75,11 @@
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dbtraining.reconx</groupId>
+                <artifactId>recon-audit-starter</artifactId>
+                <version>1.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
