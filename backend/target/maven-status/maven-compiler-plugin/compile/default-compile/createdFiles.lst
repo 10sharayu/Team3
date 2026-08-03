@@ -47,7 +47,6 @@ com\dbtraining\reconx\dto\TradeMapper.class
 com\dbtraining\reconx\model\DerivativeTrade$OptionType.class
 com\dbtraining\reconx\dto\PagedResponse.class
 com\dbtraining\reconx\model\ReconciliationRule.class
-com\dbtraining\reconx\dto\TradeMapperImpl.class
 com\dbtraining\reconx\dto\LoginResponse.class
 com\dbtraining\reconx\dto\TradeEvent.class
 com\dbtraining\reconx\config\OpenApiConfig.class

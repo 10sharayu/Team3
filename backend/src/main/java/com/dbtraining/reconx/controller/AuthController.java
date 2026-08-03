@@ -1,17 +1,22 @@
 package com.dbtraining.reconx.controller;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.dbtraining.reconx.dto.LoginRequest;
 import com.dbtraining.reconx.dto.LoginResponse;
 import com.dbtraining.reconx.exception.InvalidTradeException;
 import com.dbtraining.reconx.repository.AppUserRepository;
 import com.dbtraining.reconx.repository.entity.AppUser;
 import com.dbtraining.reconx.security.JwtTokenProvider;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
 
 /**
  * TICKET-ADV072 — POST /api/auth/login
@@ -40,6 +45,12 @@ public class AuthController {
         //   then call jwt.generate(email, role) and return a LoginResponse.
         //   Reject with InvalidTradeException("Invalid credentials") on any mismatch
         //   (do NOT leak whether the email or the password was the problem).
-        throw new UnsupportedOperationException("TICKET-ADV072");
+        AppUser u = users.findByEmail(req.email())
+                .orElseThrow(() -> new InvalidTradeException("Invalid credentials"));
+        if (!u.getEnabled() || !encoder.matches(req.password(), u.getPasswordHash())) {
+            throw new InvalidTradeException("Invalid credentials");
+        }
+        String token = jwt.generate(u.getEmail(), u.getRole());
+        return ResponseEntity.ok(new LoginResponse(token, "Bearer", jwt.expirationSeconds(), u.getRole()));
     }
 }
