@@ -26,6 +26,51 @@ spring:
     listener:
       missing-topics-fatal: false   # don't blow up if Kafka isn't running locally
 
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: false
+    consumer:
+      group-id: reconx-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.dbtraining.reconx.dto
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.dbtraining.reconx.dto.TradeEvent
+
+# =============================================================================
+# TICKET-ADV083-TICKET-ADV086 / TICKET-ADV097 — Actuator + Prometheus exposure
+#  Custom metrics registered by com.dbtraining.reconx.observability.TradeMetrics
+#  scrape via /actuator/prometheus.
+# =============================================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,env,loggers
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when_authorized
+      probes:
+        enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        reconciliation.duration: true
+      percentiles:
+        http.server.requests: 0.5, 0.95, 0.99
+    tags:
+      application: ${spring.application.name}
+
 logging:
   level:
     com.dbtraining.reconx: DEBUG
+  
+  
