@@ -61,5 +61,5 @@ function AddTrade() {
       </form>
     </section>
   );
-
+}
 export default withAuth(AddTrade);
